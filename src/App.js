@@ -8,7 +8,7 @@ import SignUp from './components/SignUp';
 function App() {
   return (
     <div className="App">
-        <Container>
+        <Container className="w-100" style={{margin:"0px",padding:"0px",border:"0px",maxWidth:"100%"}}>
           <Router basename="">
             <Routes>
               <Route path="/" element={<LandingPage/>}/>
