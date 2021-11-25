@@ -12,17 +12,21 @@ export default function LogIn() {
                         <h2 className="text-center mb-4">Iniciar Sesión</h2>
         
                         <Form >
-                            <Form.Group id="email">
-                                <Form.Label>Email</Form.Label>
-                                <Form.Control type="email" required />
+                            <Form.Group id="email" className="mb-2">
+                                <Form.Control type="email" required placeholder="E-mail address" />
                             </Form.Group>
 
-                            <Form.Group id="password">
-                                <Form.Label>Contraseña</Form.Label>
-                                <Form.Control type="password" required />
+                            <Form.Group id="password" className="mb-2" >
+                                <Form.Control type="password" required placeholder="Password" />
                             </Form.Group>
 
-                            <Button  className="w-100"  type="submit">Iniciar</Button>
+                            <Button  className="w-100"  type="submit" 
+                                    style={{
+                                        backgroundColor:"#234663", 
+                                        borderRadius:"22px",
+                                        borderStyle:"none"
+                                    }}
+                            >Iniciar</Button>
                         </Form>
                     </Card.Body>
                 </Card>

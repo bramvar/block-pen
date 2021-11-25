@@ -11,7 +11,6 @@ export default function SignUp() {
                 <Card.Body>
                     <h2 className="text-center mb-4">Registro</h2>
                     
-                
                     <Form >
                         <Form.Group className="mb-2" id="email">
                             <Form.Control type="email" placeholder="E-mail address" required />
@@ -24,7 +23,12 @@ export default function SignUp() {
                         <Form.Group className="mb-2" id="password-confirm">
                             <Form.Control type="password" placeholder="Confirm password" required />
                         </Form.Group>
-                        <Button  className="w-100"  type="submit" style={{backgroundColor:"#234663"}}>Registrarse</Button>
+                        <Button  className="w-100"  type="submit" 
+                                style={{
+                                    backgroundColor:"#234663", 
+                                    borderRadius:"22px",
+                                    borderStyle:"none"}}
+                        >Registrarse</Button>
                     </Form>
                 </Card.Body>
             </Card>
