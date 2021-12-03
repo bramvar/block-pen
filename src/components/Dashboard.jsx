@@ -7,8 +7,18 @@ export default function Dashboard() {
     return (
         <div>
             <Navbar expand="lg" variant="dark" bg="dark">
-                <Container>
-                    <Navbar.Brand href="/">Block pen</Navbar.Brand>
+                <Container className="mx-2">
+                    <Navbar.Brand href="/">
+                        <img
+                            alt=""
+                            src="/logo.svg"
+                            width="50"
+                            height="45"
+                            className="d-inline-block align-center"
+                        />{' '}
+                            
+                        Block pen
+                    </Navbar.Brand>
                     <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                     <MenuItem component={Link} to={'/myrepo'}>Team 1</MenuItem>
                     <Link to="/practice">practice</Link>
@@ -19,14 +29,14 @@ export default function Dashboard() {
                         <Nav.Link href="/myrepo">Repo</Nav.Link>
                         <Nav.Link href="/practice">Practice</Nav.Link>
                         </Nav>
-                        <Form className="d-flex">
+                        <Form className="d-flex justify-content-center">
                             <FormControl
                                 type="search"
                                 placeholder="Search"
-                                className="me-2"
+                                className="my-2"
                                 aria-label="Search"
                             />
-                            <Button variant="outline-success">Search</Button>
+                            <Button className="h-50 mx-2 py-2 " variant="outline-success">Search</Button>
                         </Form>
                         <Navbar.Text>
                             Signed in as: <a href="#r">M</a>
