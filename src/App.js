@@ -1,5 +1,6 @@
 import { Container } from 'react-bootstrap';
 import {BrowserRouter as Router, Routes, Route} from "react-router-dom"
+import CollectionView from './components/CollectionView';
 import Dashboard from './components/Dashboard';
 //import './App.css';
 import LandingPage from './components/LandingPage';
@@ -17,7 +18,9 @@ function App() {
             <Routes>
               <Route path="/landing" element={<LandingPage/>}/>
               <Route path="/" element={<Dashboard/>}>
-                  <Route path="myrepo" element={<Repository />} />
+                  <Route path="myrepo" element={<Repository />} >
+                    <Route path="d" element={<CollectionView />} />
+                  </Route>
                   <Route path="practice" element={<PracticeOpView />} />
                   <Route path="stats" element={<Statistics />} />
               </Route>

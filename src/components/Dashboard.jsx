@@ -20,7 +20,7 @@ export default function Dashboard() {
                         Block pen
                     </Navbar.Brand>
                     <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-                    <MenuItem component={Link} to={'/myrepo'}>Team 1</MenuItem>
+                    <MenuItem component={Link} to={'myrepo'}>Team 1</MenuItem>
                     
                     <Navbar.Collapse id="responsive-navbar-nav">
                         <Nav className="me-auto">
