@@ -1,8 +1,14 @@
-import React from 'react'
+import React, {useRef} from 'react'
 import {Form, Button, Card, Container } from 'react-bootstrap'
 import {Link, useHistory} from "react-router-dom"
 
 export default function LogIn() {
+
+    const userRef =useRef()
+    const passwordRef = useRef()
+    
+    
+
     return (
         <Container fluid className="d-flex align-items-center justify-content-center" 
                     style={{ minHeight: "100vh", background:"linear-gradient(110.38deg, #DCFFFD 2.19%, #99A9D1 96.77%)"}}>

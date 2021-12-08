@@ -1,7 +1,6 @@
 import React from 'react'
 import { Container} from 'react-bootstrap'
 import {Outlet} from 'react-router-dom'
-import CollectionsView from './repository/CollectionsView'
 import RepoContainer from './repository/RepoContainer'
 
 export default function Repository() {
@@ -16,7 +15,7 @@ export default function Repository() {
                     height: "100vh",
                     top:"100px",
                     borderRadius: "0px 17px 0px 0px",
-                
+
                 }}>
                     
                 <div style={{display:"flex"}}>
