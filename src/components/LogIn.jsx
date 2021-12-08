@@ -1,13 +1,33 @@
-import React, {useRef} from 'react'
-import {Form, Button, Card, Container } from 'react-bootstrap'
-import {Link, useHistory} from "react-router-dom"
+import React, {useRef,useState} from 'react'
+import {Form, Button, Card, Container,Alert} from 'react-bootstrap'
+import {Link, useNavigate} from "react-router-dom"
+import {useAuth} from '../contexts/AuthContext'
 
 export default function LogIn() {
 
     const userRef =useRef()
     const passwordRef = useRef()
-    
-    
+    const {login} = useAuth()
+    const [error, setError] = useState('')
+    const [loading, setLoading] = useState(false)
+    const navigate = useNavigate()
+
+    async function handleSubmit(e){
+        e.preventDefault()
+
+        try {
+            setError('')
+            setLoading(true)
+            await login(userRef.current.value, passwordRef.current.value)
+            navigate('')
+            
+        } catch{
+            setError('ocurrio un error al intertar iniciar sesión')
+        }
+        
+        setLoading(false)
+    }
+
 
     return (
         <Container fluid className="d-flex align-items-center justify-content-center" 
@@ -16,17 +36,17 @@ export default function LogIn() {
                 <Card>
                     <Card.Body>
                         <h2 className="text-center mb-4">Iniciar Sesión</h2>
-        
-                        <Form >
-                            <Form.Group id="email" className="mb-2">
-                                <Form.Control type="email" required placeholder="E-mail address" />
+                        {error && <Alert variant="danger">{error}</Alert>}
+                        <Form onSubmit={handleSubmit}>
+                            <Form.Group id="user" className="mb-2">
+                                <Form.Control type="input" required placeholder="User" ref={userRef}/>
                             </Form.Group>
 
                             <Form.Group id="password" className="mb-2" >
-                                <Form.Control type="password" required placeholder="Password" />
+                                <Form.Control type="password" required placeholder="Password" ref={passwordRef}/>
                             </Form.Group>
 
-                            <Button  className="w-100"  type="submit" 
+                            <Button  className="w-100"  type="submit" disabled={loading}
                                     style={{
                                         backgroundColor:"#234663", 
                                         borderRadius:"22px",

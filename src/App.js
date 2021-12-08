@@ -10,26 +10,30 @@ import Repository from './components/Repository';
 import SignUp from './components/SignUp';
 import Statistics from './components/Statistics';
 import ImagesView from './components/repository/ImagesView';
+import AuthProvider from './contexts/AuthContext';
 
 function App() {
   return (
     <div className="App">
         <Container className="w-100" style={{margin:"0px",padding:"0px",border:"0px",maxWidth:"100%"}}>
           <Router basename="">
-            <Routes>
-              <Route path="/landing" element={<LandingPage/>}/>
-              <Route path="/" element={<Dashboard/>}>
-                  <Route path="myrepo" element={<Repository />} >
-                    <Route index element={<CollectionsView />} />
-                    <Route path="d" element={<ImagesView />} />
-                  </Route>  
-                  <Route path="practice" element={<PracticeOpView />} />
-                  <Route path="stats" element={<Statistics />} />
-              </Route>
-              <Route path="/signup" element={<SignUp />} />
-              <Route path="/login" element={<LogIn />} />
-            </Routes>
-          </Router>
+            <AuthProvider>
+              <Routes>
+                <Route path="/landing" element={<LandingPage/>}/>
+                  <Route path="/" element={<Dashboard/>}>
+                      <Route path="myrepo" element={<Repository />} >
+                        <Route index element={<CollectionsView />} />
+                        <Route path="d" element={<ImagesView />} />
+                      </Route>  
+                      <Route path="practice" element={<PracticeOpView />} />
+                      <Route path="stats" element={<Statistics />} />
+                  </Route>
+                  <Route path="/signup" element={<SignUp />} />
+                  <Route path="/login" element={<LogIn />} />
+                </Routes>
+              
+            </AuthProvider>
+            </Router>
         </Container>
     </div>
   );
