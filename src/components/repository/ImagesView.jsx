@@ -1,6 +1,7 @@
 import React from 'react'
-import {Button, Card } from 'react-bootstrap'
+import {Button} from 'react-bootstrap'
 import GalleryContainer from './GalleryContainer'
+import Image from './imageView/Image'
 
 export default function ImagesView() {
     return (
@@ -16,9 +17,7 @@ export default function ImagesView() {
             </Button>          
         </div>
         <GalleryContainer>
-            <Card className="d-flex m-2"  style={{flexBasis:"calc(33.33333% - 30px)"}}>
-                 <Card.Img src="https://images.pexels.com/lib/api/pexels.png"/>                           
-            </Card>
+            <Image/>
         </GalleryContainer>
         </>
     )
