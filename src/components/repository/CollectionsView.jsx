@@ -27,7 +27,7 @@ export default function CollectionsView(props) {
         <GalleryContainer>
             {
                 collection.map((col)=>(
-                    <Collection title={col.name} description={col.description}/>
+                    <Collection title={col.name} description={col.description} img={col.images[0]}/>
                     ))
             }
             
