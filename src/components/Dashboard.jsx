@@ -7,16 +7,14 @@ import { useAuth } from '../contexts/AuthContext'
 
 export default function Dashboard() {
 
-    const token = sessionStorage.getItem("token")
     const userId = sessionStorage.getItem("currentId")
+    const user = sessionStorage.getItem("userName")
+    const collection =JSON.parse(sessionStorage.getItem("collections"))
 
     const {getUser} = useAuth()
     getUser(userId)
 
-    const user = sessionStorage.getItem("userName")
-    const collection =sessionStorage.getItem("collections")
-
-    console.log(collection)
+    console.log("this col "+collection[0].name)
     console.log("this user"+ user)
     
 

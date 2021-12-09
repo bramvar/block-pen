@@ -7,6 +7,9 @@ import { useAuth } from '../../contexts/AuthContext'
 export default function CollectionsView(props) {
 
     const {getUser} = useAuth()
+    const collection =JSON.parse(sessionStorage.getItem("collections"))
+ 
+    
 
     return (
         <>
@@ -22,7 +25,12 @@ export default function CollectionsView(props) {
         </div>
 
         <GalleryContainer>
-            <Collection/>
+            {
+                collection.map((col)=>(
+                    <Collection title={col.name} description={col.description}/>
+                    ))
+            }
+            
         </GalleryContainer>
         </>
     )

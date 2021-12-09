@@ -57,8 +57,26 @@ export default function AuthProvider({children}) {
             .then(data => {
                 console.log("tab" +data.username)
                 sessionStorage.setItem("userName",data.username)
-                var map=JSON.parse(Object.entries(data.colections[0]))
-                sessionStorage.setItem("collections",map)
+                
+                var arr=[]
+
+                data.colections.forEach(e => {
+                    var obj= new Object()
+                    obj.name=e.name
+                    obj.description=e.description
+                    obj.images=e.images
+                    obj.time=e.time
+
+                    //var jsonString= JSON.stringify(obj)
+                    
+                    arr.push(obj)
+
+                })  
+
+                var col=arr
+
+                var map=data.colections[0]
+                sessionStorage.setItem("collections",JSON.stringify(arr))
               
             })
             .catch(error=>{
