@@ -19,7 +19,7 @@ export default function LogIn() {
             setError('')
             setLoading(true)
             await login(userRef.current.value, passwordRef.current.value)
-            navigate('')
+            navigate('/')
             
         } catch{
             setError('ocurrio un error al intertar iniciar sesión')
