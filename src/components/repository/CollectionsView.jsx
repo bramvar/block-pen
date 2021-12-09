@@ -2,8 +2,12 @@ import React from 'react'
 import {Button} from 'react-bootstrap'
 import GalleryContainer from './GalleryContainer'
 import Collection from './collectionsView/Collection'
+import { useAuth } from '../../contexts/AuthContext'
 
 export default function CollectionsView(props) {
+
+    const {getUser} = useAuth()
+
     return (
         <>
         <div>

@@ -12,6 +12,8 @@ export default function LogIn() {
     const [loading, setLoading] = useState(false)
     const navigate = useNavigate()
 
+    const userId = sessionStorage.getItem("currentId")
+
     async function handleSubmit(e){
         e.preventDefault()
 
@@ -19,13 +21,30 @@ export default function LogIn() {
             setError('')
             setLoading(true)
             await login(userRef.current.value, passwordRef.current.value)
-            navigate('/')
+            getUser(userId)
+            navigate('/myrepo')
             
         } catch{
             setError('ocurrio un error al intertar iniciar sesión')
         }
         
         setLoading(false)
+    }
+
+    function getUser(id){
+        fetch("https://apiwebp.herokuapp.com/users/"+id,{
+            method:'GET',
+        
+        }).then(r => {
+                if (r.status===200) return r.json()
+            }) 
+            .then(data => {
+                console.log(data)
+              
+            })
+            .catch(error=>{
+                console.error("eRRor:", error)
+            })
     }
 
 

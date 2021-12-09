@@ -9,6 +9,7 @@ export function useAuth(){
 export default function AuthProvider({children}) {
     
     const [currentUser, setCurrentUser]=useState()
+    const [token, setToken] = useState()
     const [loading, setLoading] = useState(true)
     
 
@@ -27,19 +28,48 @@ export default function AuthProvider({children}) {
                 "Content-Type":"application/json"
             },
             body: JSON.stringify(opts)
-        }).then(r => r.json())
+        }).then(r => {
+                if (r.status===200) return r.json()
+            }) 
             .then(token => {
                 if(token.access_token){
                     console.log(token)
+                    sessionStorage.setItem("token",token.access_token)
+                    sessionStorage.setItem("currentId",token.userId)
                 }
                 else{
                     console.log("Incorrect user/password")
                 }
             })
+            .catch(error=>{
+                console.error("eRRor:", error)
+            })
     }
 
+    function getUser(id){
+
+        fetch("https://apiwebp.herokuapp.com/users/"+id,{
+            method:'GET',
+        
+        }).then(r => {
+                if (r.status===200) return r.json()
+            }) 
+            .then(data => {
+                console.log("tab" +data.username)
+                sessionStorage.setItem("userName",data.username)
+                var map=JSON.parse(Object.entries(data.colections[0]))
+                sessionStorage.setItem("collections",map)
+              
+            })
+            .catch(error=>{
+                console.error("eRRor:", error)
+            })
+    }
+
+
+
     const value = {
-        currentUser, login
+        currentUser, login, getUser
     }
 
     return (

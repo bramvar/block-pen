@@ -1,9 +1,25 @@
-import { MenuItem } from '@mui/material' 
+import { MenuItem} from '@mui/material' 
 import React from 'react'
 import { Container, Form, FormControl, Navbar,Button, Nav } from 'react-bootstrap'
 import { Link, Outlet } from 'react-router-dom'
+import { useAuth } from '../contexts/AuthContext'
+
 
 export default function Dashboard() {
+
+    const token = sessionStorage.getItem("token")
+    const userId = sessionStorage.getItem("currentId")
+
+    const {getUser} = useAuth()
+    getUser(userId)
+
+    const user = sessionStorage.getItem("userName")
+    const collection =sessionStorage.getItem("collections")
+
+    console.log(collection)
+    console.log("this user"+ user)
+    
+
     return (
         <div>
             <Navbar expand="lg" variant="dark" bg="dark" className="py-1">
@@ -37,7 +53,7 @@ export default function Dashboard() {
                             <Button className="h-50 mx-2 my-2 py-2 " variant="outline-success">Search</Button>
                         </Form>
                         <Navbar.Text>
-                            Signed in as: <a href="#r">M</a>
+                            Signed in as: <a href="#r">{user}</a>
                         </Navbar.Text>
                     </Navbar.Collapse>
                 </Container>
