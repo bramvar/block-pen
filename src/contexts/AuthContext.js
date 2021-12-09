@@ -60,12 +60,13 @@ export default function AuthProvider({children}) {
                 
                 var arr=[]
 
-                data.colections.forEach(e => {
+                data.colections.forEach((e,i) => {
                     var obj= new Object()
                     obj.name=e.name
                     obj.description=e.description
                     obj.images=e.images
                     obj.time=e.time
+                    obj.pos=i
 
                     //var jsonString= JSON.stringify(obj)
                     

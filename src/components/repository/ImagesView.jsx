@@ -4,6 +4,11 @@ import GalleryContainer from './GalleryContainer'
 import Image from './imageView/Image'
 
 export default function ImagesView() {
+
+    const currentColl=sessionStorage.getItem("currentCollection")
+    const collection =JSON.parse(sessionStorage.getItem("collections"))
+
+   
     return (
         <>
         <div>
@@ -17,7 +22,12 @@ export default function ImagesView() {
             </Button>          
         </div>
         <GalleryContainer>
-            <Image/>
+            {
+                collection[0].images.map((img)=>(
+                    <Image url={img}/>     
+                ))
+            }
+            
         </GalleryContainer>
         </>
     )

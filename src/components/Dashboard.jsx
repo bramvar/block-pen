@@ -14,7 +14,7 @@ export default function Dashboard() {
     const {getUser} = useAuth()
     getUser(userId)
 
-    console.log("this col "+collection[0].name)
+    console.log("this col "+collection[1].pos)
     console.log("this user"+ user)
     
 
