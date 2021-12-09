@@ -9,13 +9,10 @@ export default function Dashboard() {
 
     const userId = sessionStorage.getItem("currentId")
     const user = sessionStorage.getItem("userName")
-    const collection =JSON.parse(sessionStorage.getItem("collections"))
 
     const {getUser} = useAuth()
     getUser(userId)
 
-    console.log("this col "+collection[1].pos)
-    console.log("this user"+ user)
     
 
     return (
